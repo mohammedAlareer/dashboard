@@ -6,6 +6,7 @@ import { LogOut, Moon, Settings, Sun, User } from "lucide-react";
 import { useTheme } from "next-themes";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { SidebarTrigger } from "./ui/sidebar";
 
 export default function Navbar() {
   const { setTheme } = useTheme()
@@ -15,7 +16,7 @@ export default function Navbar() {
   return (
     <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10">
       {/* LEFT */}
-      collapseButton
+      <SidebarTrigger/>
       {/* RIGHT */}
       <div className="flex items-center gap-4">
         <Link href='/'>Dashboard</Link>
