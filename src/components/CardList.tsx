@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
+import { Badge } from "./ui/badge";
 
 const popularContent = [
   {
@@ -91,7 +92,7 @@ const latestTransactions = [
 export default function CardList({title} : {title:string}) {
     const list = title === "popularContent" ? popularContent :latestTransactions
   return (
-    <div>
+    <div className="flex flex-col gap-2">
         {list.map((item) => (
         <Card key={item.id} className="flex-row items-center justify-between p-4">
         <div className="w-12 h-12 relative">
@@ -104,6 +105,8 @@ export default function CardList({title} : {title:string}) {
         </div>
         <CardContent className="flex-1 p-0">
             <CardTitle className="text-sm  font-medium">{item.title}</CardTitle>
+            <Badge variant="secondary">{item.badge}</Badge>
+
         </CardContent>
         <CardFooter className="p-0">{item.count/ 1000}K</CardFooter>
     </Card>
