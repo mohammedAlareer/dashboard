@@ -1,17 +1,24 @@
+import AppLineChart from "@/components/AppLineChart";
 import EditUser from "@/components/EditUser";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Progress } from "@/components/ui/progress";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { BadgeCheck, Candy, Citrus, Shield } from "lucide-react";
-import Link from "next/link";
 
-export default function singleUserPage() {
+export default function SingleUserPage() {
   return (
-    <div className="">
+    <div>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -29,10 +36,12 @@ export default function singleUserPage() {
       </Breadcrumb>
 
       <div className="mt-4 flex flex-col xl:flex-row gap-8">
+        {/* LEFT */}
         <div className="w-full xl:w-1/3 space-y-6">
           {/* USER BADGES CONTAINER */}
           <div className="bg-primary-foreground p-4 rounded-lg">
             <h1 className="text-xl font-semibold">User Badges</h1>
+
             <div className="flex gap-4 mt-4">
               <HoverCard>
                 <HoverCardTrigger>
@@ -48,6 +57,7 @@ export default function singleUserPage() {
                   </p>
                 </HoverCardContent>
               </HoverCard>
+
               <HoverCard>
                 <HoverCardTrigger>
                   <Shield
@@ -58,11 +68,11 @@ export default function singleUserPage() {
                 <HoverCardContent>
                   <h1 className="font-bold mb-2">Admin</h1>
                   <p className="text-sm text-muted-foreground">
-                    Admin users have access to all features and can manage
-                    users.
+                    Admin users have access to all features and can manage users.
                   </p>
                 </HoverCardContent>
               </HoverCard>
+
               <HoverCard>
                 <HoverCardTrigger>
                   <Candy
@@ -77,6 +87,7 @@ export default function singleUserPage() {
                   </p>
                 </HoverCardContent>
               </HoverCard>
+
               <HoverCard>
                 <HoverCardTrigger>
                   <Citrus
@@ -91,10 +102,11 @@ export default function singleUserPage() {
                   </p>
                 </HoverCardContent>
               </HoverCard>
-        </div>
-        </div>
+            </div>
+          </div>
 
-        <div className="bg-primary-foreground p-4 rounded-lg">
+          {/* USER INFORMATION */}
+          <div className="bg-primary-foreground p-4 rounded-lg">
             <div className="flex items-center justify-between">
               <h1 className="text-xl font-semibold">User Information</h1>
               <Sheet>
@@ -104,47 +116,65 @@ export default function singleUserPage() {
                 <EditUser />
               </Sheet>
             </div>
+
             <div className="space-y-4 mt-4">
               <div className="flex flex-col gap-2 mb-8">
-                <p className="text-sm text-muted-foreground">
-                  Profile completion
-                </p>
+                <p className="text-sm text-muted-foreground">Profile completion</p>
                 <Progress value={66} />
               </div>
+
               <div className="flex items-center gap-2">
                 <span className="font-bold">Username:</span>
                 <span>john.doe</span>
               </div>
+
               <div className="flex items-center gap-2">
                 <span className="font-bold">Email:</span>
                 <span>john.doe@gmail.com</span>
               </div>
+
               <div className="flex items-center gap-2">
                 <span className="font-bold">Phone:</span>
                 <span>+1 234 5678</span>
               </div>
+
               <div className="flex items-center gap-2">
                 <span className="font-bold">Location:</span>
                 <span>New York, NY</span>
               </div>
+
               <div className="flex items-center gap-2">
                 <span className="font-bold">Role:</span>
                 <Badge>Admin</Badge>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mt-4">
-              Joined on 2025.01.01
+
+            <p className="text-sm text-muted-foreground mt-4">Joined on 2025.01.01</p>
+          </div>
+        </div>
+
+        {/* RIGHT */}
+        <div className="w-full xl:w-2/3 space-y-6">
+          <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
+            <div className="flex items-center gap-2">
+              <Avatar className="size-12">
+                <AvatarImage src="https://avatars.githubusercontent.com/u/1486366" />
+                <AvatarFallback>JD</AvatarFallback>
+              </Avatar>
+              <h1 className="text-xl font-semibold">John Doe</h1>
+            </div>
+
+            <p className="text-sm text-muted-foreground">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit...
             </p>
           </div>
 
+          <div className="bg-primary-foreground p-4 rounded-lg">
+            <h1 className="text-xl font-semibold">User Activity</h1>
+            <AppLineChart />
+          </div>
         </div>
-
-
-
-
-        <div></div>
       </div>
-
     </div>
-  )
+  );
 }
